@@ -1,55 +1,37 @@
 <?php
-// Database configuration
-$servername = "localhost";
-$username = "root";     // default XAMPP
-$password = "";         // default XAMPP (kosong)
-$dbname = "hki";        // nama database
+// koneksi.php
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Toggle debug (set false di production)
+if (!defined('DEBUG_MODE')) define('DEBUG_MODE', false);
 
-// Set charset untuk mendukung UTF-8 (karakter Indonesia)
-$conn->set_charset("utf8");
+// DB config - sesuaikan jika perlu
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '';
+$db_name = 'hki';
+$db_port = 3306;
 
-// Check koneksi
-if ($conn->connect_error) {
-    // Jangan gunakan die() untuk API endpoints karena akan mengacaukan JSON response
-    // die("Connection failed: " . $conn->connect_error);
-    
-    // Instead, set error flag yang bisa dicek oleh file yang menginclude
-    $connection_error = "Database connection failed: " . $conn->connect_error;
-    
-    // Log error untuk debugging
-    error_log("Database Connection Error: " . $conn->connect_error);
-    
-    // Untuk non-API files, masih bisa gunakan die()
-    // Tapi untuk API, biarkan file yang include yang handle error
-    if (!defined('API_REQUEST')) {
-        die("Connection failed: " . $conn->connect_error);
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name, $db_port);
+if ($conn->connect_errno) {
+    if (defined('API_REQUEST')) {
+        header('Content-Type: application/json; charset=utf-8');
+        http_response_code(500);
+        echo json_encode(['success' => false, 'message' => 'DB connection failed', 'error' => $conn->connect_error]);
+        exit;
     }
-} else {
-    // Connection successful
-    $connection_error = null;
-    
-    // Optional: Set timezone
-    $conn->query("SET time_zone = '+07:00'"); // WIB timezone
+    die("Database connection failed: " . $conn->connect_error);
 }
 
-// Function untuk test koneksi (optional)
-function testConnection() {
-    global $conn, $connection_error;
-    
-    if ($connection_error) {
-        return false;
-    }
-    
-    $result = $conn->query("SELECT 1");
-    return $result !== false;
+if (!$conn->set_charset("utf8mb4")) {
+    error_log("Warning: couldn't set charset utf8mb4: " . $conn->error);
 }
 
-// Function untuk escape string (security)
-function escapeString($string) {
-    global $conn;
-    return $conn->real_escape_string($string);
+function dbDebug($msg) {
+    if (!defined('DEBUG_MODE') || !DEBUG_MODE) return;
+    $entry = "[".date('Y-m-d H:i:s')."] ".$msg.PHP_EOL;
+    error_log($entry, 3, __DIR__ . '/database_debug.log');
+    if (!defined('API_REQUEST')) echo "<pre>".htmlspecialchars($entry)."</pre>";
 }
 ?>

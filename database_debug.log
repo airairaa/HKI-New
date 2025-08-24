@@ -1,0 +1,118 @@
+[2025-08-20 13:51:41][info]: Current character set: utf8
+[2025-08-20 13:51:41][success]: Database connection successful
+[2025-08-20 13:51:41][info]: Timezone set successfully
+[2025-08-20 13:51:41][info]: Connected to database: hki
+[2025-08-20 13:51:41][info]: Character set: utf8
+[2025-08-20 13:51:41][info]: Current timezone: +07:00
+[2025-08-20 13:51:41][info]: Database status: Array
+(
+    [connected] => 1
+    [server_info] => 11.1.2-MariaDB
+    [client_info] => mysqlnd 8.2.12
+    [host_info] => localhost via TCP/IP
+    [protocol_version] => 10
+    [thread_id] => 3
+    [charset] => utf8
+)
+
+[2025-08-20 13:52:07][info]: Current character set: utf8
+[2025-08-20 13:52:07][success]: Database connection successful
+[2025-08-20 13:52:07][info]: Timezone set successfully
+[2025-08-20 13:52:07][info]: Connected to database: hki
+[2025-08-20 13:52:07][info]: Character set: utf8
+[2025-08-20 13:52:07][info]: Current timezone: +07:00
+[2025-08-20 13:52:07][info]: Database status: Array
+(
+    [connected] => 1
+    [server_info] => 11.1.2-MariaDB
+    [client_info] => mysqlnd 8.2.12
+    [host_info] => localhost via TCP/IP
+    [protocol_version] => 10
+    [thread_id] => 7
+    [charset] => utf8
+)
+
+[2025-08-20 13:52:28][info]: Current character set: utf8
+[2025-08-20 13:52:28][success]: Database connection successful
+[2025-08-20 13:52:28][info]: Timezone set successfully
+[2025-08-20 13:52:28][info]: Connected to database: hki
+[2025-08-20 13:52:28][info]: Character set: utf8
+[2025-08-20 13:52:28][info]: Current timezone: +07:00
+[2025-08-20 13:52:28][info]: Database status: Array
+(
+    [connected] => 1
+    [server_info] => 11.1.2-MariaDB
+    [client_info] => mysqlnd 8.2.12
+    [host_info] => localhost via TCP/IP
+    [protocol_version] => 10
+    [thread_id] => 9
+    [charset] => utf8
+)
+
+[2025-08-20 13:59:17][info]: Current character set: utf8
+[2025-08-20 13:59:17][success]: Database connection successful
+[2025-08-20 13:59:17][info]: Timezone set successfully
+[2025-08-20 13:59:17][info]: Connected to database: hki
+[2025-08-20 13:59:17][info]: Character set: utf8
+[2025-08-20 13:59:17][info]: Current timezone: +07:00
+[2025-08-20 13:59:17][info]: Database status: Array
+(
+    [connected] => 1
+    [server_info] => 11.1.2-MariaDB
+    [client_info] => mysqlnd 8.2.12
+    [host_info] => localhost via TCP/IP
+    [protocol_version] => 10
+    [thread_id] => 19
+    [charset] => utf8
+)
+
+[2025-08-20 13:59:27][info]: Current character set: utf8
+[2025-08-20 13:59:27][success]: Database connection successful
+[2025-08-20 13:59:27][info]: Timezone set successfully
+[2025-08-20 13:59:27][info]: Connected to database: hki
+[2025-08-20 13:59:27][info]: Character set: utf8
+[2025-08-20 13:59:27][info]: Current timezone: +07:00
+[2025-08-20 13:59:27][info]: Database status: Array
+(
+    [connected] => 1
+    [server_info] => 11.1.2-MariaDB
+    [client_info] => mysqlnd 8.2.12
+    [host_info] => localhost via TCP/IP
+    [protocol_version] => 10
+    [thread_id] => 23
+    [charset] => utf8
+)
+
+[2025-08-20 14:02:15][info]: Current character set: utf8
+[2025-08-20 14:02:15][success]: Database connection successful
+[2025-08-20 14:02:15][info]: Timezone set successfully
+[2025-08-20 14:02:17][info]: Current character set: utf8
+[2025-08-20 14:02:17][success]: Database connection successful
+[2025-08-20 14:02:17][info]: Timezone set successfully
+[2025-08-20 14:02:27][info]: Current character set: utf8
+[2025-08-20 14:02:27][success]: Database connection successful
+[2025-08-20 14:02:27][info]: Timezone set successfully
+[2025-08-20 14:02:32][info]: Current character set: utf8
+[2025-08-20 14:02:32][success]: Database connection successful
+[2025-08-20 14:02:32][info]: Timezone set successfully
+[2025-08-20 14:49:28][info]: Current character set: utf8
+[2025-08-20 14:49:28][success]: Database connection successful
+[2025-08-20 14:49:28][info]: Timezone set successfully
+[2025-08-20 14:51:21][info]: Current character set: utf8
+[2025-08-20 14:51:21][success]: Database connection successful
+[2025-08-20 14:51:21][info]: Timezone set successfully
+[2025-08-20 14:51:22][info]: Current character set: utf8
+[2025-08-20 14:51:22][success]: Database connection successful
+[2025-08-20 14:51:22][info]: Timezone set successfully
+[2025-08-20 14:57:12][info]: Current character set: utf8
+[2025-08-20 14:57:12][success]: Database connection successful
+[2025-08-20 14:57:12][info]: Timezone set successfully
+[2025-08-20 15:00:42][info]: Current character set: utf8
+[2025-08-20 15:00:42][success]: Database connection successful
+[2025-08-20 15:00:42][info]: Timezone set successfully
+[2025-08-20 15:00:44][info]: Current character set: utf8
+[2025-08-20 15:00:44][success]: Database connection successful
+[2025-08-20 15:00:44][info]: Timezone set successfully
+[2025-08-20 15:33:02][info]: Current character set: utf8
+[2025-08-20 15:33:02][success]: Database connection successful
+[2025-08-20 15:33:02][info]: Timezone set successfully

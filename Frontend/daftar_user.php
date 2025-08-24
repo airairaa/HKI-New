@@ -8,7 +8,7 @@ include '../Backend/session_check.php';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
     <title>Daftar Permohonan User</title>
     
 </head>
@@ -71,6 +71,7 @@ include '../Backend/session_check.php';
         </div>
     </div>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/daftar_user.js"></script>
 </body>
 
