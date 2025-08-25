@@ -3,36 +3,42 @@ include '../Backend/session_check.php';
 
 // Periksa apakah dataid ada di URL
 $dataid = $_GET['dataid'] ?? null;
+$mode = $_GET['mode'] ?? 'create';
+$detail_id = $_GET['id'] ?? '';
 
+// jika tidak ada dataid -> redirect
 if ($dataid === null) {
-    // Jika dataid tidak ada, redirect ke halaman input_awal.php dengan pesan error
     header('Location: input_awal.php?error=Data ID tidak ditemukan');
     exit();
 }
 
-// Ambil data pengusul dari session
+// Ambil data pengusul dari session (transient additions) lalu unset agar tidak persist
 $data_pengusul = $_SESSION['data_pengusul'] ?? [];
-
-// Reset data pengusul setelah ditampilkan
 unset($_SESSION['data_pengusul']);
 
 include '../koneksi.php';
 
-// Ambil data dosen
-$dosen_result = $conn->query("SELECT * FROM data_pribadi_dosen WHERE dataid = '$dataid'");
+// Ambil data dosen dari DB dan gabungkan
+$dosen_result = $conn->query("SELECT * FROM data_pribadi_dosen WHERE dataid = '".$conn->real_escape_string($dataid)."'");
 while ($row = $dosen_result->fetch_assoc()) {
     $row['role'] = 'Dosen';
     $data_pengusul[] = $row;
 }
 
-// Ambil data mahasiswa
-$mhs_result = $conn->query("SELECT * FROM data_pribadi_mahasiswa WHERE dataid = '$dataid'");
+// Ambil data mahasiswa dari DB dan gabungkan
+$mhs_result = $conn->query("SELECT * FROM data_pribadi_mahasiswa WHERE dataid = '".$conn->real_escape_string($dataid)."'");
 while ($row = $mhs_result->fetch_assoc()) {
     $row['role'] = 'Mahasiswa';
     $data_pengusul[] = $row;
 }
-?>
 
+// tentukan url untuk tombol "SEBELUMNYA" sesuai mode
+if ($mode === 'edit' && $detail_id !== '') {
+    $prev_url = 'input_awal.php?dataid=' . urlencode($dataid) . '&id=' . urlencode($detail_id) . '&mode=edit';
+} else {
+    $prev_url = 'input_awal.php?dataid=' . urlencode($dataid);
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -68,10 +74,10 @@ while ($row = $mhs_result->fetch_assoc()) {
                             <div class="flex justify-between items-center">
                                 <div>
                                     <h2 class="text-lg font-semibold"><?= htmlspecialchars($pengusul['nama']) ?></h2>
-                                    <p class="text-gray-600"><?= htmlspecialchars($pengusul['alamat']) ?>, <?= htmlspecialchars($pengusul['kode_pos']) ?></p>
-                                    <p class="text-gray-600">📞 <?= htmlspecialchars($pengusul['nomor_telepon']) ?></p>
-                                    <p class="text-gray-600">✉ <?= htmlspecialchars($pengusul['email']) ?></p>
-                                    <p class="text-gray-600">🏫 <?= htmlspecialchars($pengusul['fakultas']) ?></p>
+                                    <p class="text-gray-600"><?= htmlspecialchars($pengusul['alamat']) ?>, <?= htmlspecialchars($pengusul['kode_pos'] ?? '') ?></p>
+                                    <p class="text-gray-600">📞 <?= htmlspecialchars($pengusul['nomor_telepon'] ?? '') ?></p>
+                                    <p class="text-gray-600">✉ <?= htmlspecialchars($pengusul['email'] ?? '') ?></p>
+                                    <p class="text-gray-600">🏫 <?= htmlspecialchars($pengusul['fakultas'] ?? '') ?></p>
                                     <span class="bg-blue-600 text-white px-2 py-1 rounded-full text-sm"><?= htmlspecialchars($pengusul['role']) ?></span>
                                 </div>
                                 <div class="flex space-x-2">
@@ -97,7 +103,7 @@ while ($row = $mhs_result->fetch_assoc()) {
 
         <!-- Navigasi -->
         <div class="flex justify-between mt-6">
-            <a href="input_awal.php?dataid=<?= htmlspecialchars($dataid) ?>">
+            <a href="<?= htmlspecialchars($prev_url) ?>">
                 <button class="bg-teal-700 text-white px-4 py-2 rounded">SEBELUMNYA</button>
             </a>
             <a href="preview.php?dataid=<?= htmlspecialchars($dataid) ?>">

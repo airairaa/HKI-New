@@ -1,5 +1,23 @@
 <?php
 include '../Backend/session_check.php';
+
+// determine identifiers safely from GET or session
+$dataid = $_GET['dataid'] ?? $_SESSION['dataid'] ?? null;
+$mode = $_GET['mode'] ?? $_SESSION['mode'] ?? 'create';
+$detail_id = $_GET['id'] ?? $_SESSION['detail_id'] ?? '';
+
+// build previous url according to mode and available identifiers
+if ($mode === 'edit' && !empty($detail_id)) {
+    $prev_url = 'input.php?dataid=' . urlencode($dataid) . '&id=' . urlencode($detail_id) . '&mode=edit';
+} elseif (!empty($dataid)) {
+    $prev_url = 'input.php?dataid=' . urlencode($dataid);
+} else {
+    // fallback to input list or landing page
+    $prev_url = 'input.php';
+}
+
+// build next url (keep dataid so upload page can continue the flow)
+$next_url = !empty($dataid) ? 'upload.php?dataid=' . urlencode($dataid) : 'upload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,10 +88,10 @@ include '../Backend/session_check.php';
 
     <!-- Navigasi -->
     <div class="flex justify-between mt-4">
-      <a href="input.php">
+      <a href="<?= htmlspecialchars($prev_url, ENT_QUOTES, 'UTF-8') ?>">
         <button class="bg-teal-700 text-white px-4 py-2 rounded">SEBELUMNYA</button>
       </a>
-      <a href="upload.php">
+      <a href="<?= htmlspecialchars($next_url, ENT_QUOTES, 'UTF-8') ?>">
         <button class="bg-teal-700 text-white px-4 py-2 rounded">SELANJUTNYA</button>
       </a>
     </div>
