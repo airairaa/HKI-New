@@ -62,7 +62,6 @@ function loadUserData(page = 1) {
 
         const contohKarya = files.contoh_karya || files.karya || files.contoh || null;
 
-        // ensure we pass id/dataid/upload_id to delete so backend can handle whichever it expects
         tableBody.innerHTML += `
           <tr class="hover:bg-gray-50">
             <td class="p-3 align-top">
