@@ -23,7 +23,7 @@ try {
 
     $user_id = (int) $_SESSION['user_id'];
     $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-    $limit = 10; // increase if you want more rows per page
+    $limit = 5; // increase if you want more rows per page
     $offset = ($page - 1) * $limit;
     $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 

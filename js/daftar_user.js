@@ -62,7 +62,6 @@ function loadUserData(page = 1) {
 
         const contohKarya = files.contoh_karya || files.karya || files.contoh || null;
 
-        // ensure we pass id/dataid/upload_id to delete so backend can handle whichever it expects
         tableBody.innerHTML += `
           <tr class="hover:bg-gray-50">
             <td class="p-3 align-top">
@@ -77,8 +76,7 @@ function loadUserData(page = 1) {
             <td class="p-3 text-center align-top">${escapeHtml(row.status || 'Pending')}</td>
             <td class="p-3 text-center align-top">
               <div class="flex flex-col gap-2 items-center">
-                <button onclick="viewDetails(${JSON.stringify(idVal ?? dataidVal ?? uploadIdVal)})" class="bg-blue-500 text-white px-3 py-1 rounded text-xs">Detail</button>
-                <button onclick="location.href='input_awal.php?id=${encodeURIComponent(idVal ?? '')}&dataid=${encodeURIComponent(dataidVal ?? '')}&upload_id=${encodeURIComponent(uploadIdVal ?? '')}'" class="bg-yellow-500 text-white px-3 py-1 rounded text-xs">Edit</button>
+                <button onclick="location.href='input_awal.php?id=${encodeURIComponent(idVal ?? '')}&dataid=${encodeURIComponent(dataidVal ?? '')}&upload_id=${encodeURIComponent(uploadIdVal ?? '')}&mode=edit'" class="bg-yellow-500 text-white px-3 py-1 rounded text-xs">Edit</button>
                 <button onclick="confirmDelete(${JSON.stringify(idVal)}, ${JSON.stringify(dataidVal)}, ${JSON.stringify(uploadIdVal)})" class="bg-red-500 text-white px-3 py-1 rounded text-xs">Hapus</button>
               </div>
             </td>
@@ -96,6 +94,7 @@ function loadUserData(page = 1) {
     });
 }
 
+// ...rest of file unchanged...
 function openFileByUploadId(uploadId, type) {
   const url = `../Backend/view_file.php?upload_id=${encodeURIComponent(uploadId)}&type=${encodeURIComponent(type)}`;
   window.open(url, '_blank');
@@ -169,10 +168,6 @@ function updatePagination(currentPage, totalPages) {
   }
   if (currentPage < totalPages) html += `<button onclick="loadUserData(${currentPage+1})" class="px-2 py-1 border rounded">Next</button>`;
   p.innerHTML = html;
-}
-
-function viewDetails(id){ 
-  alert('Detail ID: ' + id);
 }
 
 function escapeHtml(s){ if (s==null) return ''; const d=document.createElement('div'); d.textContent = s; return d.innerHTML; }
