@@ -199,8 +199,12 @@ $input_awal = $_SESSION['input_awal'] ?? [
             </div>
 
             <div class="flex justify-between mt-4">
-                <a href="daftar_user.php"><button type="button" class="bg-green-800 text-white px-4 py-2 rounded">SEBELUMNYA</button></a>
-                <button type="submit" class="bg-green-800 text-white px-4 py-2 rounded">SELANJUTNYA</button>
+                <a href="<?php echo htmlspecialchars($prev_url, ENT_QUOTES, 'UTF-8'); ?>">
+                    <button type="button" class="bg-green-800 text-white px-4 py-2 rounded">SEBELUMNYA</button>
+                </a>
+                <a href="input.php?dataid=<?= htmlspecialchars($dataid) ?>">
+                    <button class="bg-teal-700 text-white px-6 py-2 rounded">SELANJUTNYA</button>
+                </a>
             </div>
         </form>
     </div>

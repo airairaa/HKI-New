@@ -17,7 +17,7 @@ include '../Backend/session_check.php';
     <div class="bg-gray-100 w-full max-w-5xl p-8 rounded-lg shadow-lg">
         <h1 class="text-2xl font-bold mb-4">DAFTAR PERMOHONAN USER</h1>
         <div class="w-full flex justify-between items-center mb-6">
-            <h2 class="text-lg font-semibold text-gray-700">Selamat datang, <?php echo $_SESSION['role'] ?? 'User'; ?>!</h2>
+            <h2 class="text-lg font-semibold text-gray-700">Selamat datang</h2>
             <a href="logout.php" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition flex items-center">
                 <i class="fas fa-sign-out-alt mr-2"></i>Logout
             </a>

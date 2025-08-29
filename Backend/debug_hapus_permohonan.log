@@ -37,3 +37,15 @@
 2025-08-24T18:42:03+02:00 POST={"id":"86"} RAW= COOKIE={"PHPSESSID":"hpkujjr9vdfh59jd3psv3bgdhn"} SESSION={"user_id":1,"role":"user"}
 2025-08-24T18:42:03+02:00 NOTE: target_dataid=86 is unassigned (owner=0) - allowing user_id=1 to delete
 2025-08-24T18:42:03+02:00 DIAG target_dataid=86 ownerOfDetail=0 ownedIds=[] allIds=[]
+2025-08-25T13:36:37+02:00 POST={"id":"66"} RAW= COOKIE={"PHPSESSID":"nps0n8475l7joto34k48dv1csc"} SESSION={"user_id":1,"role":"user"}
+2025-08-25T13:36:37+02:00 NOTE: target_dataid=66 is unassigned (owner=0) - allowing user_id=1 to delete
+2025-08-25T13:36:37+02:00 DIAG target_dataid=66 ownerOfDetail=0 ownedIds=[] allIds=[]
+2025-08-25T14:35:33+02:00 POST={"id":"70"} RAW= COOKIE={"PHPSESSID":"nps0n8475l7joto34k48dv1csc"} SESSION={"user_id":2,"role":"admin"}
+2025-08-25T14:35:33+02:00 NOTE: target_dataid=70 is unassigned (owner=0) - allowing user_id=2 to delete
+2025-08-25T14:35:33+02:00 DIAG target_dataid=70 ownerOfDetail=0 ownedIds=[] allIds=[]
+2025-08-26T10:55:02+02:00 POST={"id":"74"} RAW= COOKIE={"PHPSESSID":"nvg254a6fhhnran562l0v072ap"} SESSION={"user_id":2,"role":"admin"}
+2025-08-26T10:55:02+02:00 NOTE: target_dataid=74 is unassigned (owner=0) - allowing user_id=2 to delete
+2025-08-26T10:55:02+02:00 DIAG target_dataid=74 ownerOfDetail=0 ownedIds=[] allIds=[]
+2025-08-26T10:55:08+02:00 POST={"id":"75"} RAW= COOKIE={"PHPSESSID":"nvg254a6fhhnran562l0v072ap"} SESSION={"user_id":2,"role":"admin"}
+2025-08-26T10:55:08+02:00 NOTE: target_dataid=75 is unassigned (owner=0) - allowing user_id=2 to delete
+2025-08-26T10:55:08+02:00 DIAG target_dataid=75 ownerOfDetail=0 ownedIds=[] allIds=[]

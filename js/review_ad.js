@@ -19,49 +19,57 @@ function loadData(page = 1, searchQuery = '') {
             table.innerHTML = "";
 
             data.forEach((row, idx) => {
-                const detailId = `detail-row-${idx}`;
-                table.innerHTML += `
-                  <tr>
-                    <td>
-                      <button class="btn btn-link p-0 text-start judul-expand" data-detail-id="${detailId}">${row.judul || ''}</button>
-                    </td>
-                    <td>${row.file_contoh_karya ? `<a href="../uploads/${row.file_contoh_karya}" target="_blank">Lihat</a>` : '-'}</td>
-                    <td>${row.file_ktp ? `<a href="../uploads/${row.file_ktp}" target="_blank">Lihat</a>` : '-'}</td>
-                    <td>${row.file_sp ? `<a href="../uploads/${row.file_sp}" target="_blank">Lihat</a>` : '-'}</td>
-                    <td>${row.file_sph ? `<a href="../uploads/${row.file_sph}" target="_blank">Lihat</a>` : '-'}</td>
-                    <td>${row.file_bukti_pembayaran ? `<a href="../uploads/${row.file_bukti_pembayaran}" target="_blank">Lihat</a>` : '-'}</td>
-                    <td>
-                      <form class="updateForm" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="${row.review_id || ''}">
-                        <select name="status">
-                          <option ${row.status == "Diajukan" ? "selected" : ""}>Diajukan</option>
-                          <option ${row.status == "Revisi" ? "selected" : ""}>Revisi</option>
-                          <option ${row.status == "Terdaftar" ? "selected" : ""}>Terdaftar</option>
-                        </select>
-                        <input type="file" name="sertifikat">
-                        <button type="submit" name="update">Update</button>
-                      </form>
-                    </td>
-                    <td>${row.status || ''}</td>
-                    <td>
-                      ${row.sertifikat ? `<a href="../uploads/${row.sertifikat}" target="_blank">Lihat</a>` : 'Belum Ada'}
-                    </td>
-                  </tr>
-                  <tr id="${detailId}" class="detail-row" style="display:none; background:#f8f9fa;">
-                    <td colspan="9">
-                      <div><b>Jenis Permohonan:</b> ${row.jenis_permohonan || '-'}</div>
-                      <div><b>Jenis Ciptaan:</b> ${row.jenis_ciptaan || '-'}</div>
-                      <div><b>Sub Jenis:</b> ${row.sub_jenis || '-'}</div>
-                      <div><b>Judul:</b> ${row.judul || '-'}</div>
-                      <div><b>Uraian Singkat:</b> ${row.uraian_singkat || '-'}</div>
-                      <div><b>Tanggal:</b> ${row.tanggal || '-'}</div>
-                      <div><b>Negara:</b> ${row.negara || '-'}</div>
-                      <div><b>Jenis Pendanaan:</b> ${row.jenis_pendanaan || '-'}</div>
-                      <div><b>Nama Pendanaan:</b> ${row.nama_pendanaan || '-'}</div>
-                    </td>
-                  </tr>
-                `;
-            });
+              const detailId = `detail-row-${idx}`;
+              table.innerHTML += `
+                <tr>
+                  <td>
+                    <button class="btn btn-link p-0 text-decoration-none fw-semibold judul-expand" 
+                            data-detail-id="${detailId}">
+                      ${row.judul || ''}
+                    </button>
+                  </td>
+                  <td>${row.file_contoh_karya ? `<a class="btn btn-outline-primary btn-sm" href="../uploads/${row.file_contoh_karya}" target="_blank">Lihat</a>` : '-'}</td>
+                  <td>${row.file_ktp ? `<a class="btn btn-outline-primary btn-sm" href="../uploads/${row.file_ktp}" target="_blank">Lihat</a>` : '-'}</td>
+                  <td>${row.file_sp ? `<a class="btn btn-outline-primary btn-sm" href="../uploads/${row.file_sp}" target="_blank">Lihat</a>` : '-'}</td>
+                  <td>${row.file_sph ? `<a class="btn btn-outline-primary btn-sm" href="../uploads/${row.file_sph}" target="_blank">Lihat</a>` : '-'}</td>
+                  <td>${row.file_bukti_pembayaran ? `<a class="btn btn-outline-primary btn-sm" href="../uploads/${row.file_bukti_pembayaran}" target="_blank">Lihat</a>` : '-'}</td>
+                  <td>
+                    <form class="updateForm d-flex flex-column gap-2" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" name="id" value="${row.review_id || ''}">
+                      <select name="status" class="form-select form-select-sm">
+                        <option ${row.status == "Diajukan" ? "selected" : ""}>Diajukan</option>
+                        <option ${row.status == "Revisi" ? "selected" : ""}>Revisi</option>
+                        <option ${row.status == "Terdaftar" ? "selected" : ""}>Terdaftar</option>
+                      </select>
+                      <input type="file" name="sertifikat" class="form-control form-control-sm">
+                      <button type="submit" name="update" class="btn btn-sm btn-success">💾 Update</button>
+                    </form>
+                  </td>
+                  <td class="text-center fw-semibold">${row.status || ''}</td>
+                  <td class="text-center">
+                    ${row.sertifikat ? `<a class="btn btn-outline-success btn-sm" href="../uploads/${row.sertifikat}" target="_blank">Lihat</a>` : '<span class="text-muted">Belum Ada</span>'}
+                  </td>
+                </tr>
+                <tr id="${detailId}" class="detail-row" style="display:none; background:#f8f9fa;">
+                  <td colspan="9">
+                    <div class="p-3">
+                      <div class="row g-2">
+                        <div class="col-md-6"><b>Jenis Permohonan:</b> ${row.jenis_permohonan || '-'}</div>
+                        <div class="col-md-6"><b>Jenis Ciptaan:</b> ${row.jenis_ciptaan || '-'}</div>
+                        <div class="col-md-6"><b>Sub Jenis:</b> ${row.sub_jenis || '-'}</div>
+                        <div class="col-md-6"><b>Judul:</b> ${row.judul || '-'}</div>
+                        <div class="col-md-12"><b>Uraian Singkat:</b> ${row.uraian_singkat || '-'}</div>
+                        <div class="col-md-4"><b>Tanggal:</b> ${row.tanggal || '-'}</div>
+                        <div class="col-md-4"><b>Negara:</b> ${row.negara || '-'}</div>
+                        <div class="col-md-4"><b>Jenis Pendanaan:</b> ${row.jenis_pendanaan || '-'}</div>
+                        <div class="col-md-6"><b>Nama Pendanaan:</b> ${row.nama_pendanaan || '-'}</div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              `;
+          });
+          
 
             // Setelah render, pasang event listener untuk ekspansi
             setTimeout(() => {

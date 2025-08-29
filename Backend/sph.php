@@ -32,9 +32,24 @@ $i = 1;
 
 // $jenis_pendanaan = isset($_POST['jenis_pendanaan']) ? $_POST['jenis_pendanaan'] : 'Tidak tersedia';
 $jenis_pendanaan = isset($data['jenis_pendanaan']) ? $data['jenis_pendanaan'] : 'Tidak tersedia';
+$jenis_hibah = isset($data['jenis_hibah']) ? $data['jenis_hibah'] : 'Tidak tersedia';
 //$pendanaan = isset($_POST['pendanaanHidden']) ? $_POST['pendanaanHidden'] : 'Tidak ada data';
 
-
+if($jenis_hibah == "hibah penelitian dosen pemula"){
+ $test = "Rp. 50.000.000,00";
+}
+else if($jenis_hibah == "hibah penelitian dasar"){
+ $test = "Rp. 100.000.000,00";
+}
+else if($jenis_hibah == "hibah penelitian dosen kolaborasi"){
+ $test = "Rp. 150.000.000,00";
+}
+else if($jenis_hibah == "hibah penelitian mahasiswa"){
+ $test = "Rp. 10.000.000,00";
+}
+else{
+ $test = "Tidak tersedia";
+}
 // Set header agar langsung membuka PDF
 header('Content-Type: application/pdf');
 header('Content-Disposition: inline; filename="sph.pdf"');
@@ -215,7 +230,7 @@ $pdf->Cell(85, 10, $jenis_pendanaan, 1, 0, 'C');
 //$pendanaan = isset($_POST['pendanaanHidden']) ? $_POST['pendanaanHidden'] : 'Tidak ada data';
 
 $pdf->Ln(10);
-$pdf->Cell(20, 10, 'Dengan angka pendanaan sejumlah: ' . $jenis_pendanaan, 0, 1, 'L');
+$pdf->Cell(20, 10, 'Dengan angka pendanaan sejumlah: ' . $test, 0, 1, 'L');
 $pdf->Ln(5);
 
 //lanjut 4

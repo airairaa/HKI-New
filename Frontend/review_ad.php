@@ -14,13 +14,21 @@ checkRole('admin');
     <script src="../js/review_ad.js" defer></script>
 </head>
 <body>
-<div class="container my-4">
-    <h3 class="text-center mb-4">DAFTAR PERMOHONAN</h3>
-    <input id="searchInput" class="form-control mb-3" placeholder="Cari Judul..." type="text"/>
+<body>
 
-    <div class="table-responsive">
+
+<div class="container pt-5 mt-4">
+    <h3 class="text-center fw-bold mb-4">📑 Daftar Permohonan</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-6 mx-auto">
+            <input id="searchInput" class="form-control shadow-sm" placeholder="🔍 Cari judul permohonan..." type="text"/>
+        </div>
+    </div>
+
+    <div class="table-responsive shadow-sm rounded">
         <table class="table table-bordered table-striped table-hover align-middle mb-0">
-            <thead class="table-light">
+            <thead class="table-primary text-center">
                 <tr>
                     <th>Judul</th>
                     <th>Contoh Karya</th>
@@ -28,13 +36,13 @@ checkRole('admin');
                     <th>SP</th>
                     <th>SPH</th>
                     <th>Bukti Pembayaran</th>
-                    <th>Proses Status</th>
+                    <th>Proses</th>
                     <th>Status</th>
                     <th>Sertifikat</th>
                 </tr>
             </thead>
             <tbody id="permohonanTable">
-                <!-- Data akan dimuat oleh JavaScript -->
+                <!-- Data dimuat via JavaScript -->
             </tbody>
         </table>
     </div>
@@ -45,7 +53,7 @@ checkRole('admin');
     </nav>
 
     <div class="text-center mt-4">
-        <a href="login.php" class="btn btn-success">SEBELUMNYA</a>
+        <a href="login.php" class="btn btn-secondary px-4">⬅ Sebelumnya</a>
     </div>
 </div>
 </body>
